@@ -12,9 +12,12 @@ func _ready():
 	player = $"../../Player"
 	
 func _physics_process(delta):
+	var distToPlayer = global_position.distance_to(player.global_position)
 	
-	if player:
+	if distToPlayer > 3:
 		velocity = global_position.direction_to(player.global_position)
+	else:
+		velocity = Vector3(0,velocity.y,0)
 	
 	if not is_on_floor():
 		velocity.y -= gravity * delta

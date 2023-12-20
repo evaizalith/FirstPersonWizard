@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cxeck2qijbn5w"]
 
-[ext_resource type="Script" path="res://enemy.gd" id="1_57d72"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_g5qa5"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2k6af"]
 
@@ -49,15 +49,15 @@ transform = Transform3D(1, 0.000980655, -0.000180888, 0.000570216, -0.413517, 0.
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_uwbxb")
 
-[node name="Enemy" type="Node3D" parent="."]
-transform = Transform3D(-0.999999, -0.00138803, -1.55743e-06, -0.00138803, 0.999996, 0.00236994, -1.7322e-06, 0.00236994, -0.999997, 0.000986448, 0.00948044, -7.99999)
+[node name="Enemy2" type="Node3D" parent="."]
+transform = Transform3D(-0.999999, -0.00138803, -1.55777e-06, -0.00138803, 0.999994, 0.00236994, -1.7322e-06, 0.00236994, -0.999997, 9.31323e-10, 1, -10)
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="Enemy"]
-transform = Transform3D(1, -2.21121e-11, 1.45519e-11, 3.27702e-11, 1, 0, 0, 1.16415e-10, 1, 0, 0.77912, 0)
-script = ExtResource("1_57d72")
+[node name="CharacterBody3D" type="CharacterBody3D" parent="Enemy2"]
+transform = Transform3D(1, 3.62519e-11, 8.73115e-11, 3.82101e-10, 1, -1.16415e-10, 0, 5.82077e-10, 1, 0, 0, 0)
+script = ExtResource("1_g5qa5")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy/CharacterBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy2/CharacterBody3D"]
 shape = SubResource("CapsuleShape3D_1mebm")
 
-[node name="CSGMesh3D" type="CSGMesh3D" parent="Enemy/CharacterBody3D"]
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Enemy2/CharacterBody3D"]
 mesh = SubResource("CapsuleMesh_hkntw")
