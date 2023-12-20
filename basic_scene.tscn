@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxeck2qijbn5w"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2k6af"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f6q8l"]
+size = Vector3(100, 1, 100)
+
+[node name="BasicScene" type="Node3D"]
+
+[node name="Floor" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mass = 0.01
+physics_material_override = SubResource("PhysicsMaterial_2k6af")
+gravity_scale = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_f6q8l")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Floor"]
+size = Vector3(100, 1, 100)
