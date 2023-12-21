@@ -25,3 +25,6 @@ func _process(delta):
 		velocity.y -= gravity * delta
 	
 	move_and_slide()
+	
+func damage(dmg):
+	print("We just took so much damage!!!")

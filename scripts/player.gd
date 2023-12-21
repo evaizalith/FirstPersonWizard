@@ -4,6 +4,8 @@ extends CharacterBody3D
 @export var SPEED = 5.0
 @export var JUMP_VELOCITY = 4.5
 
+@export var Bullet : PackedScene
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var camera
@@ -41,9 +43,16 @@ func _physics_process(delta):
 
 	move_and_slide()
 
+func _process(delta):
+	if Input.is_action_just_pressed("left_trigger"):
+		shoot()
+
 func _input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		rotationHelper.rotate_y(-event.relative.x * mouseSensitivity)
 		camera.rotate_x(-event.relative.y * mouseSensitivity)
 		camera.rotation.x = clamp(camera.rotation.x, -deg_to_rad(70), deg_to_rad(70))
 		
+func shoot():
+	var bullet = Bullet.instantiate()
+	owner.add_child(bullet)

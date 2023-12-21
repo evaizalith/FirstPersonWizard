@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://csklp5352ok5h"]
+
+[ext_resource type="Script" path="res://scripts/basicProjectile.gd" id="1_fop5n"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_sbi74"]
+radius = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1vq6p"]
+albedo_color = Color(1, 0, 0, 1)
+
+[node name="Bullet" type="Node3D"]
+transform = Transform3D(1, 2.33911e-11, 5.82077e-11, 1.97673e-11, 1, 0, 0, 0, 1, -0.00274294, 4.77911, -4.61727)
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("1_fop5n")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 2.33911e-11, 1.45519e-11, 1.97673e-11, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("SphereShape3D_sbi74")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Area3D"]
+radius = 0.1
+material = SubResource("StandardMaterial3D_1vq6p")
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
