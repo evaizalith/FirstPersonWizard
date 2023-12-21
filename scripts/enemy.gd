@@ -3,6 +3,7 @@ extends CharacterBody3D
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
+const attackDamage = 5
 var player
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -28,3 +29,9 @@ func _process(delta):
 	
 func damage(dmg):
 	print("We just took so much damage!!!")
+	queue_free()
+
+func _on_range_body_entered(body):
+	if body.is_in_group("player"):
+		#body.damage(damage)
+		body.damage(attackDamage)

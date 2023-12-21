@@ -1,7 +1,7 @@
 extends Area3D
 
 @export var speed = 10
-@export var damage = 10 
+@export var attackDamage = 10 
 
 var player
 var launchAngle = Vector3()
@@ -16,6 +16,7 @@ func _ready():
 	launchAngle = playerCamera.get_global_transform().basis.z * -1
 	#launchAngle.normalized()
 	global_position = player.transform.origin
+	global_position.y += 1.5
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -24,5 +25,5 @@ func _physics_process(delta):
 func _on_body_entered(body):
 	if body.is_in_group("damageable"):
 		#body.damage(damage)
-		body.damage(damage)
+		body.damage(attackDamage)
 		queue_free()

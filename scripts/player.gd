@@ -56,3 +56,7 @@ func _input(event):
 func shoot():
 	var bullet = Bullet.instantiate()
 	owner.add_child(bullet)
+
+func damage(dmg):
+	print("damn dead player")
+
