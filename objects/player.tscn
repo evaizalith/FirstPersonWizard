@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://djx21s1q14efn"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_rfpo6"]
+[ext_resource type="PackedScene" uid="uid://csklp5352ok5h" path="res://objects/bullet.tscn" id="2_ky6yj"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1mebm"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_hkntw"]
+
+[node name="Player" type="Node3D"]
+transform = Transform3D(1, 2.33911e-11, 1.60071e-10, 1.97673e-11, 1, 0, 0, 0, 1, -0.001, 1, 0.002)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." groups=["player"]]
+transform = Transform3D(1, 2.33911e-11, 1.01863e-10, 1.97673e-11, 1, 0, 0, 0, 1, 4.01812e-10, 0.77912, 1.74623e-10)
+script = ExtResource("1_rfpo6")
+Bullet = ExtResource("2_ky6yj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_1mebm")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CharacterBody3D"]
+mesh = SubResource("CapsuleMesh_hkntw")
+
+[node name="rotationHelper" type="Node3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 2.36327e-11, -1.45519e-11, 1.97673e-11, 1, 0, 0, 0, 1, -0.000968325, 0.616133, 0.00165335)
+
+[node name="Camera" type="Camera3D" parent="CharacterBody3D/rotationHelper"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.008)

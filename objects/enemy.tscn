@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://2vf18blbj0q0"]
+
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_ptpix"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1mebm"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_hkntw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t7b45"]
+albedo_color = Color(0.741176, 0.164706, 0.207843, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0nykd"]
+size = Vector3(1, 0.242249, 1.47662)
+
+[node name="Enemy" type="Node3D"]
+transform = Transform3D(1, 2.33911e-11, 3.34694e-10, 1.97673e-11, 1, 0, 0, 0, 1, 0, 1, -6.073)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." groups=["damageable"]]
+transform = Transform3D(1, 2.3789e-11, 1.16415e-10, 1.97673e-11, 1, 0, 0, 0, 1, 3.49246e-10, 0.77912, 4.76837e-07)
+script = ExtResource("1_ptpix")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_1mebm")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CharacterBody3D"]
+mesh = SubResource("CapsuleMesh_hkntw")
+material = SubResource("StandardMaterial3D_t7b45")
+
+[node name="Range" type="Area3D" parent="CharacterBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/Range"]
+transform = Transform3D(1, 2.39169e-11, 4.5402e-09, 1.97673e-11, 1, 0, 0, 0, 1, -5.82077e-11, 0.157135, 0.238315)
+shape = SubResource("BoxShape3D_0nykd")
+
+[connection signal="body_entered" from="CharacterBody3D/Range" to="CharacterBody3D" method="_on_range_body_entered"]
