@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://c3jjf757xghia"]
+
+[node name="Ui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Health" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 24.0
+grow_vertical = 0
+scale = Vector2(5, 1)
+color = Color(0, 0, 0, 0.278431)
+
+[node name="Label" type="Label" parent="Health"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 7.0
+offset_right = 58.0
+offset_bottom = 30.0
+scale = Vector2(0.2, 1)
+text = "Health:"
+
+[node name="Ammo" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -40.0
+offset_right = -96.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(5, 1)
+color = Color(0, 0, 0, 0.278431)
+
+[node name="Label" type="Label" parent="Ammo"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 7.0
+offset_right = 58.0
+offset_bottom = 30.0
+scale = Vector2(0.2, 1)
+text = "Ammo:"
