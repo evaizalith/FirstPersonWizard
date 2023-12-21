@@ -13,9 +13,11 @@ func _ready():
 	
 func _process(delta):
 	var distToPlayer = global_position.distance_to(player.transform.origin)
-	print()
+	
 	if distToPlayer > 2.5:
-		velocity = global_position.direction_to(player.transform.origin)
+		var newVelocity = global_position.direction_to(player.transform.origin)
+		velocity.x = newVelocity.x
+		velocity.z = newVelocity.z
 	else:
 		velocity = Vector3(0,velocity.y,0)
 	
